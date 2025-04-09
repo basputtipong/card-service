@@ -1,0 +1,16 @@
+services:
+  card-service:
+    build:
+      context: .
+    container_name: card
+    image: card-service
+    environment:
+      DB_HOST: db
+    ports:
+      - "1500:1500"
+    networks:
+      - backend
+
+networks:
+  backend:
+    external: true
