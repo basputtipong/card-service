@@ -11,14 +11,14 @@ type CardReq struct {
 }
 
 type CardRes struct {
-	CardID      string `json:"card_id"`
-	UserID      string `json:"user_id"`
+	CardID      string `json:"cardId"`
+	UserID      string `json:"userId"`
 	Name        string `json:"name"`
 	Issuer      string `json:"issuer"`
 	Number      string `json:"number"`
 	Status      string `json:"status"`
 	Color       string `json:"color"`
-	BorderColor string `json:"border_color"`
+	BorderColor string `json:"borderColor"`
 }
 
 func (res *CardRes) BuildCardResponse(repoRes port.CardRepoRes) {
