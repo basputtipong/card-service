@@ -15,7 +15,7 @@ func bindGetCardRoute(app *gin.Engine) {
 	svc := service.NewCardService(repo)
 	hdl := handler.NewCardHandler(svc)
 
-	app.GET("/card", libmiddleware.JWTMiddleware(), hdl.Handle)
+	app.GET("/card", libmiddleware.JWTVerify(), hdl.Handle)
 }
 
 func bindHelthRoute(app *gin.Engine) {
