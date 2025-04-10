@@ -16,6 +16,6 @@
 - *First, you need to install mockery by using command
 `make mock-install`*  
 - *Then use this command to generate repository mock 
-`mockery --name=<repo_name> --dir=internal/core/port  --output=internal/core/port/mocks --outpkg=mocks`*  
+`mockery --all --dir=internal/core/port  --output=internal/core/port/mocks --outpkg=mocks`*  
 ***
 #### *See Makefile for other command*
