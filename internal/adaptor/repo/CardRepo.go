@@ -15,8 +15,8 @@ func NewCardRepo(db *gorm.DB) port.CardRepo {
 	return &cardRepo{db}
 }
 
-func (r *cardRepo) GetByUserId(userId string) (port.CardRepoRes, error) {
-	var repoRes port.CardRepoRes
+func (r *cardRepo) GetByUserId(userId string) ([]port.CardRepoRes, error) {
+	var repoRes []port.CardRepoRes
 	err := r.db.Table(port.DebitCardsTbl+" AS dc").
 		Select("dc.card_id, dc.user_id, dc.name, dcd.issuer, dcd.number, dcs.status, dcn.color, dcn.border_color").
 		Joins(fmt.Sprintf(`LEFT JOIN %s dcd ON dc.card_id = dcd.card_id`, port.DebitCardDetailsTbl)).

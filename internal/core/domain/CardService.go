@@ -11,6 +11,10 @@ type CardReq struct {
 }
 
 type CardRes struct {
+	Cards []Card `json:"cards"`
+}
+
+type Card struct {
 	CardID      string `json:"cardId"`
 	UserID      string `json:"userId"`
 	Name        string `json:"name"`
@@ -21,13 +25,19 @@ type CardRes struct {
 	BorderColor string `json:"borderColor"`
 }
 
-func (res *CardRes) BuildCardResponse(repoRes port.CardRepoRes) {
-	res.CardID = repoRes.CardID
-	res.UserID = repoRes.UserID
-	res.Name = repoRes.Name
-	res.Issuer = repoRes.Issuer
-	res.Number = repoRes.Number
-	res.Status = repoRes.Status
-	res.Color = repoRes.Color
-	res.BorderColor = repoRes.BorderColor
+func (res *CardRes) BuildCardResponse(repoRes []port.CardRepoRes) {
+	var cards []Card
+	for _, ele := range repoRes {
+		cards = append(cards, Card{
+			CardID:      ele.CardID,
+			UserID:      ele.UserID,
+			Name:        ele.Name,
+			Issuer:      ele.Issuer,
+			Number:      ele.Number,
+			Status:      ele.Status,
+			Color:       ele.Color,
+			BorderColor: ele.BorderColor,
+		})
+	}
+	res.Cards = cards
 }

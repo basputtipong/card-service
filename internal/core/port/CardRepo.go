@@ -1,7 +1,7 @@
 package port
 
 type CardRepo interface {
-	GetByUserId(userId string) (CardRepoRes, error)
+	GetByUserId(userId string) ([]CardRepoRes, error)
 }
 
 const (
