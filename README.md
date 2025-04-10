@@ -11,11 +11,11 @@
 - *`GET /health` for service health checking*  
 ***
 ### Unit test  
+- *`make test-service` to run service unit test*  
 #### To generate mock file with mockery  
 - *First, you need to install mockery by using command
 `make mock-install`*  
 - *Then use this command to generate repository mock 
 `mockery --name=<repo_name> --dir=internal/core/port  --output=internal/core/port/mocks --outpkg=mocks`*  
-- *`make test-service` to run service unit test*  
 ***
 #### *See Makefile for other command*
