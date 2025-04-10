@@ -86,4 +86,17 @@ func TestCardSvc_Execute(t *testing.T) {
 		assert.Equal(t, expected, res)
 		mockRepo.AssertExpectations(t)
 	})
+	t.Run("Should_Error_When_No_User_ID", func(t *testing.T) {
+		mockRepo := new(mocks.CardRepo)
+		svc := service.NewCardService(mockRepo)
+		req := domain.CardReq{
+			UserId: "",
+		}
+		res, err := svc.Execute(req)
+
+		expected := domain.CardRes{}
+		assert.Error(t, err)
+		assert.Equal(t, expected, res)
+		mockRepo.AssertExpectations(t)
+	})
 }
